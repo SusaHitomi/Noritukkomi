@@ -1,8 +1,10 @@
 package com.kayosystem.honki.chapter02.d1;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.SoundPool;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +49,10 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mSoundPool = new SoundPool(mItemList.get(position).raw, AudioManager.STREAM_MUSIC,0);
                 mSoundId=mSoundPool.load(mContext,mItemList.get(position).raw,0);
                 mSoundPool.play(mSoundId,1.0f,1.0f,0,0,1.0f);
+                mSoundPool.release();
             }
         });
     }
