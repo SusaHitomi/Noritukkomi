@@ -1,6 +1,7 @@
 package com.kayosystem.honki.chapter02.d1;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,8 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
     private SoundPool mSoundPool;
     private int mSoundId;
 
+    SharedPreferences pref;
+
     public SingleRecyclerAdapter(final Context context, final List<Sound> itemList) {
         mContext = context;
         mItemList = itemList;
@@ -32,7 +35,9 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(mContext).inflate(R.layout.item, parent, false);
-        return new SingleViewHolder(view,mContext);
+        return new SingleViewHolder(view, mContext);
+
+
     }
     // ビューホルダーを生成するメソッドです。LayoutInflaterを使ってレイアウトXMLのビューオブジェクトを生成し、
     // それをコンストラクタの引数としてビューホルダーを生成し返却します。
@@ -44,15 +49,37 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
         ImageView imageView = (ImageView) holder.itemView.findViewById(R.id.imageView);
         linearLayout = (LinearLayout) holder.itemView.findViewById(R.id.linearLayout);
 
+        pref = mContext.getSharedPreferences("表示・非表示の倉庫",Context.MODE_PRIVATE);
+
+
         textItem.setText(mItemList.get(position).label);
         imageView.setImageResource(mItemList.get(position).drawableRes);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSoundPool = new SoundPool(mItemList.get(position).raw, AudioManager.STREAM_MUSIC,0);
-                mSoundId=mSoundPool.load(mContext,mItemList.get(position).raw,0);
-                mSoundPool.play(mSoundId,1.0f,1.0f,0,0,1.0f);
-                mSoundPool.release();
+                mSoundPool = new SoundPool(mItemList.get(position).raw, AudioManager.STREAM_MUSIC, 0);
+                mSoundId = mSoundPool.load(mContext, mItemList.get(position).raw, 0);
+                mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+                    @Override
+                    public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+                        mSoundPool.play(mSoundId, 1.0f, 1.0f, 0, 0, 1.0f);
+                        mSoundPool.release();
+                    }
+                });
+
+            }
+        });
+        linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean( mItemList.get(position).label,false );
+                editor.commit();
+
+                mItemList.remove(position);
+                notifyDataSetChanged();
+
+                return false;
             }
         });
     }
@@ -65,11 +92,6 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
     }
     //表示するリストの行数を返却するメソッドです。
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mSoundPool.release();
-//    }
 
 
 }
