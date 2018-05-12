@@ -30,6 +30,8 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
     public SingleRecyclerAdapter(final Context context, final List<Sound> itemList) {
         mContext = context;
         mItemList = itemList;
+
+        mSoundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
     }
 
     @Override
@@ -57,16 +59,15 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSoundPool = new SoundPool(mItemList.get(position).raw, AudioManager.STREAM_MUSIC, 0);
                 mSoundId = mSoundPool.load(mContext, mItemList.get(position).raw, 0);
                 mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
                     @Override
                     public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                        mSoundPool.play(mSoundId, 1.0f, 1.0f, 0, 0, 1.0f);
-                        mSoundPool.release();
+                        mSoundPool.play(mSoundId, 1.0f, 1.0f, 0, 0, 1.0f); //playにreleaseすぐ来てるから流れない！
+                        //mSoundPool.release();
+                        //mSoundPool = null;
                     }
                 });
-
             }
         });
         linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
@@ -88,10 +89,8 @@ public class SingleRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
+
         return mItemList.size();
     }
     //表示するリストの行数を返却するメソッドです。
-
-
-
 }

@@ -7,21 +7,24 @@ import android.media.SoundPool;
 public enum Sound {    // enumは決まった組み合わせをそのままセットにするもの
     Laugh("笑い", R.drawable.laugh,R.raw.laugh),    //new Sound("笑い", R.drawable.idea);
     Clap("拍手", R.drawable.clap, R.raw.cheer),
+    Vaudeville("なんでやねん！",R.drawable.nannde,R.raw.nandeyanen),
+    Cat("ベシっ！",R.drawable.cat,R.raw.bisi),
     Cracker("クラッカー", R.drawable.cracker, R.raw.cheer),
     Drum("ドラムロール", R.drawable.drum, R.raw.roll),
     Cymbal("シンバル", R.drawable.cymbal, R.raw.roll_finish1),
+    Bing("チーン",R.drawable.triangle,R.raw.tin1),
+    Man("オッ！",R.drawable.man,R.raw.man),
+    Exclamation("びっくり！", R.drawable.exclamation, R.raw.betoben),
 
     Stupid1("間抜け１",R.drawable.sick,R.raw.stupid1),
     Stupid2("間抜け２", R.drawable.dumb, R.raw.stupid2),
     Stupid3("間抜け３",R.drawable.sad,R.raw.stupid3),
     Stupid4("間抜け４",R.drawable.feelings,R.raw.stupid4),
+    Question1("問題１",R.drawable.question1,R.raw.question1),
+    Question2("問題2",R.drawable.question2,R.raw.question2),
     Correct("正解",R.drawable.circle,R.raw.correct),
-    Incorrect("不正解",R.drawable.wrong,R.raw.correctno),
+    Incorrect("不正解",R.drawable.wrong,R.raw.correctno);
 
-    Bing("チーン",R.drawable.triangle,R.raw.tin1),
-    Vaudeville("なんでやねん！",R.drawable.nannde,R.raw.nandeyanen),
-    Man("オッ！",R.drawable.man,R.raw.man),
-    Exclamation("びっくり！", R.drawable.exclamation, R.raw.betoben);
 
 
     String label;
