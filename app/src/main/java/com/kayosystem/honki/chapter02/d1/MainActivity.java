@@ -50,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reset(View v) {
+        Sound[] array = Sound.values();
+        for (int j = 0; j < array.length; j++) {
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean( array[j].label,true);
+            editor.commit();
+        }
+
+       // Boolean inVisible =
+
         sounds=Arrays.asList(Sound.values());
         adapter = new SingleRecyclerAdapter(getApplicationContext(), sounds);
         recyclerView.setAdapter(adapter);

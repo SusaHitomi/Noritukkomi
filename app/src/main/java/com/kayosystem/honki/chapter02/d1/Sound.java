@@ -9,8 +9,10 @@ public enum Sound {    // enumは決まった組み合わせをそのままセ�
     Vaudeville("なんでやねん！",R.drawable.nannde,R.raw.nandeyanen),
     Cat("ベシっ！",R.drawable.cat,R.raw.bisi),
     Bing("チーン",R.drawable.triangle,R.raw.tin1),
+    Clap("拍手", R.drawable.clap, R.raw.cheer),
     Man("オッ！",R.drawable.man,R.raw.man),
-    Exclamation("びっくり！", R.drawable.exclamation, R.raw.betoben),
+    //Exclamation("びっくり！", R.drawable.exclamation, R.raw.betoben),
+    Piano("ベートーベン", R.drawable.piano, R.raw.betoben),
     Stupid1("間抜け１",R.drawable.sick,R.raw.stupid1),
     Stupid2("間抜け２", R.drawable.dumb, R.raw.stupid2),
     Stupid3("間抜け３",R.drawable.sad,R.raw.stupid3),
@@ -19,10 +21,13 @@ public enum Sound {    // enumは決まった組み合わせをそのままセ�
     Question2("問題2",R.drawable.question2,R.raw.question2),
     Correct("正解",R.drawable.circle,R.raw.correct),
     Incorrect("不正解",R.drawable.wrong,R.raw.correctno),
-    Cracker("クラッカー", R.drawable.cracker, R.raw.cheer),
+    Cracker("クラッカー", R.drawable.cracker, R.raw.dondonpafupafu),
+    Trumpet("トランペット",R.drawable.trumpet,R.raw.trumpet1),
     Drum("ドラムロール", R.drawable.drum, R.raw.roll),
     Cymbal("シンバル", R.drawable.cymbal, R.raw.roll_finish1),
-    Clap("拍手", R.drawable.clap, R.raw.cheer);
+    Eee("えー", R.drawable.eee, R.raw.eee),
+    Chick("コケコッコー", R.drawable.chick, R.raw.chicken_kokekokko),
+    Wind("しらける", R.drawable.wind, R.raw.wind);
 
 
 
