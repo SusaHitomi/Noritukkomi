@@ -1,4 +1,4 @@
-package com.kayosystem.honki.chapter02.d1;
+package com.kayosystem.honki.chapter02.noritukkomi;
 
 import org.junit.Test;
 

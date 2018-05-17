@@ -1,4 +1,4 @@
-package com.kayosystem.honki.chapter02.d1;
+package com.kayosystem.honki.chapter02.noritukkomi;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

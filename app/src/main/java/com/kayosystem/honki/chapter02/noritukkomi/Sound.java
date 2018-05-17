@@ -1,8 +1,4 @@
-package com.kayosystem.honki.chapter02.d1;
-
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.SoundPool;
+package com.kayosystem.honki.chapter02.noritukkomi;
 
 public enum Sound {    // enumは決まった組み合わせをそのままセットにするもの
     Laugh("笑い", R.drawable.laugh,R.raw.laugh),    //new Sound("笑い", R.drawable.idea);

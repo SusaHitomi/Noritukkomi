@@ -1,11 +1,10 @@
-package com.kayosystem.honki.chapter02.d1;
+package com.kayosystem.honki.chapter02.noritukkomi;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
